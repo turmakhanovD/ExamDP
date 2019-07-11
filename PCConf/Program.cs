@@ -71,7 +71,7 @@ namespace PCConf
     public class VideoCard : PCDecorator
     {
         public VideoCard(PC p)
-            : base(p.Name + ", GTX 1050Ti", p)
+            : base("GTX 1050Ti", p)
         { }
 
         public override int GetCost()
@@ -83,7 +83,7 @@ namespace PCConf
     public class Processor : PCDecorator
     {
         public Processor(PC p)
-            : base(p.Name + ", Intel Core I7 7700K", p)
+            : base("Intel Core I7 7700K", p)
         { }
 
         public override int GetCost()
@@ -95,7 +95,7 @@ namespace PCConf
     public class MotherBoard : PCDecorator
     {
         public MotherBoard(PC p)
-            : base(p.Name + ", Asus Monster 200R", p)
+            : base("Asus Monster 200R", p)
         { }
 
         public override int GetCost()
@@ -107,7 +107,7 @@ namespace PCConf
     public class ChargeBlock : PCDecorator
     {
         public ChargeBlock(PC p)
-            : base(p.Name + ", AeroCool XPyse", p)
+            : base("AeroCool XPyse", p)
         { }
 
         public override int GetCost()
@@ -155,8 +155,9 @@ namespace PCConf
         }
 
         //инициализация всех компонентов(декораторов)
-        public Facade(VideoCard videoCard, Processor processor, MotherBoard motherBoard, ChargeBlock chargeBlock)
+        public Facade(PC pc, VideoCard videoCard, Processor processor, MotherBoard motherBoard, ChargeBlock chargeBlock)
         {
+            this.pc = pc;
             _videoCard = videoCard;
             _processor = processor;
             _motherBoard = motherBoard;
@@ -180,11 +181,12 @@ namespace PCConf
         //сборка своего и покупка пк
         public void BuyOwnPC()
         {
-
+            _price = pc.GetCost();
+            int counter = 1;
             Console.WriteLine("Выберите компоненты: \n");
             foreach (var decorator in decorators)
             {
-                int counter = 1;
+                
                 Console.WriteLine($"{counter}.{decorator.Name}| {decorator.GetCost()}");
                 counter++;
             }
@@ -224,6 +226,16 @@ namespace PCConf
     {
         static void Main(string[] args)
         {
+            PC pc = new CustomPC();
+            var videoCard = new VideoCard(pc);
+            var proc = new Processor(pc);
+            var mb = new MotherBoard(pc);
+            var chargeBlock = new ChargeBlock(pc);
+
+            var facade = new Facade(pc,videoCard,proc,mb,chargeBlock);
+
+            facade.BuyOwnPC();
+            
 
             Console.ReadLine();
         }
