@@ -42,6 +42,54 @@
         }
     }
 
+    class VideoCard : PCDecorator
+    {
+        public VideoCard(PC p)
+            : base(p.Name + ", GTX 1050Ti", p)
+        { }
+
+        public override int GetCost()
+        {
+            return pc.GetCost() + 120000;
+        }
+    }
+
+    class Processor : PCDecorator
+    {
+        public Processor(PC p)
+            : base(p.Name + ", Intel Core I7 7700K", p)
+        { }
+
+        public override int GetCost()
+        {
+            return pc.GetCost() + 140000;
+        }
+    }
+
+    class MotherBoard : PCDecorator
+    {
+        public MotherBoard(PC p)
+            : base(p.Name + ", Asus Monster 200R", p)
+        { }
+
+        public override int GetCost()
+        {
+            return pc.GetCost() + 70000;
+        }
+    }
+
+    class ChargeBlock : PCDecorator
+    {
+        public ChargeBlock(PC p)
+            : base(p.Name + ", AeroCool XPyse", p)
+        { }
+
+        public override int GetCost()
+        {
+            return pc.GetCost() + 80000;
+        }
+    }
+
 
     class Program
     {
