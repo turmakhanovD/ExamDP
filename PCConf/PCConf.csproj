@@ -43,8 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChargeBlock.cs" />
+    <Compile Include="CustomPC.cs" />
+    <Compile Include="Facade.cs" />
+    <Compile Include="HomePC.cs" />
+    <Compile Include="MotherBoard.cs" />
+    <Compile Include="PC.cs" />
+    <Compile Include="PCDecorator.cs" />
+    <Compile Include="Processor.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProPC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VideoCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
